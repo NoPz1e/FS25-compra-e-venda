@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Compra-e-venda</title>
+</head>
+<body>
+    <select id="tipoSelect">
+        <option value="">-- Escolhe uma opção --</option>
+        <option value="charrua">charrua</option>
+        <option value="reboque">Reboque</option>
+        <option value="trator">Trator</option>
+    </select>
+
+    <div id="charrua" class="campos-condicionais" hidden>
+        <label>
+
+            largura de trabalho: <input type="number" id="charrua_width">
+
+            Preço: <input type="text" disabled id="preco_charrua">
+
+            <button type="button" class="btn-copiar" data-target="preco_charrua"><img src="/assets/copy_icon.png" width="10px"></button>
+        
+            <button type="button" class="btn-enviar" data-origem="preco_charrua" data-target="campo_destino"><img src="/assets/send_icon.png" width="10px"></button>
+        
+        </label>
+    </div>
+
+    <div id="campoReboque" class="campos-condicionais" hidden>
+        <label>Capacidade do reboque (kg): <input type="number"></label>
+    </div>
+
+    <div id="campoTrator" class="campos-condicionais" hidden>
+        <label>Potência do trator (cv): <input type="number"></label>
+    </div>
+
+    <script src="/java.js"></script>
+</body>
+</html>
