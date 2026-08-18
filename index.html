@@ -8,13 +8,59 @@
 </head>
 <body>
     <select id="tipoSelect">
-        <option value="">-- Escolhe uma opção --</option>
         <option value="charrua">charrua</option>
         <option value="reboque">Reboque</option>
         <option value="trator">Trator</option>
     </select>
 
-    <div id="charrua" class="campos-condicionais" hidden>
+    <div id="trator" class="campos-condicionais" hidden>
+        <label>
+
+            Cavalagem: <input type="number" id="cavalagem_trator">
+
+            <select id="caixa_trator">
+                <option value="manual">Manual</option>
+                <option value="power_shift">Power shift</option>
+                <option value="CVT">CVT</option>
+            </select>
+
+            <select id="velocidade_trator">
+                <option value="30">30km/h</option>
+                <option value="40">40km/h</option>
+                <option value="50">50km/h</option>
+            </select>
+
+            <select id="marca_trator">
+                <option value="fenft/jd">fendt / Jonh</option>
+                <option value="outras">outras</option>
+            </select>
+
+            <select id="tamanho_trator">
+                <option value="pequeno">pequeno</option>
+                <option value="medio">medio</option>
+                <option value="grande">grande</option>
+            </select>
+
+            <div>
+                <input type="checkbox" name="bracos" id="bracos_trator">Braços frontais
+                <input type="checkbox" name="carregador" id="carregador_trator"> Carregador
+            </div>
+
+
+
+
+
+
+            Preço: <input type="text" disabled id="preco_trator">
+
+            <button type="button" class="btn-copiar" data-target="preco_trator"><img src="assets/copy_icon.png" width="10px"></button>
+        
+            <button type="button" class="btn-enviar" data-origem="preco_trator" data-target="campo_destino"><img src="assets/send_icon.png" width="10px"></button>
+
+        </label>
+    </div>
+
+    <div id="charrua" class="campos-condicionais" hidden >
         <label>
 
             largura de trabalho: <input type="number" id="charrua_width">
@@ -28,9 +74,7 @@
         </label>
     </div>
 
-    <div id="campoReboque" class="campos-condicionais" hidden>
-        <label>Capacidade do reboque (kg): <input type="number"></label>
-    </div>
+    
 
     <div id="campoTrator" class="campos-condicionais" hidden>
         <label>Potência do trator (cv): <input type="number"></label>
