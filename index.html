@@ -72,7 +72,7 @@
             <div id="charrua" class="campos-condicionais" hidden >
                 <label>
 
-                    largura de trabalho: <input type="number" id="charrua_width">
+                    largura de trabalho(m): <input type="number" id="charrua_width">
 
                     Preço: <input type="text" disabled id="preco_charrua">
 
@@ -85,11 +85,34 @@
 
             
 
-            <div id="campoTrator" class="campos-condicionais" hidden>
-                <label>Potência do trator (cv): <input type="number"></label>
+            <div id="Reboque" class="campos-condicionais" hidden>
+
+                <label>
+                    <p>m&sup3;: <input type="number" id="m_reboque"></p>
+
+                    <p>Nº exle direcional: <input type="number" name="eixo_reboque" id="eixo_reboque"></p>
+
+                    <p>
+                    Preço: <input type="text" disabled id="preco_reboque">
+
+                    <button type="button" class="btn-copiar" data-target="preco_reboque"><img src="assets/copy_icon.png" width="10px"></button>
+                    
+                    <button type="button" class="btn-enviar" data-origem="preco_reboque" data-target="preco_novo"><img src="assets/send_icon.png" width="30px"></button>
+                    </p>
+               </label> 
             </div>
 
         </div>
+
+
+
+
+
+
+
+
+
+
 
         <div class="card">
             <h1>Venda/usados</h1>

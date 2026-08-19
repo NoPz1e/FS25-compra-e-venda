@@ -30,6 +30,12 @@
         "bracos": 2000,
         "carregador": 5000
     },
+
+    "reboque": {
+        "precoPorMetro": 1600,
+        "axle_livr_for": 4000
+     },
+
     "charrua": {
         "precoPorMetro": 6400
      },

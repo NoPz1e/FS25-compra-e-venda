@@ -10,7 +10,7 @@ select.addEventListener('change', function() {
   if (select.value === 'trator') {
     document.getElementById('trator').hidden = false;
   } else if (select.value === 'reboque') {
-    document.getElementById('campoReboque').hidden = false;
+    document.getElementById('Reboque').hidden = false;
   } else if (select.value === 'charrua') {
     document.getElementById('charrua').hidden = false;
   }
@@ -33,20 +33,7 @@ fetch('precos.json')
 
 
 
-// charrua --------------------------------------------------------------------------
-const charruaWidth = document.getElementById('charrua_width');
-const precocharrua = document.getElementById('preco_charrua');
 
-charruaWidth.addEventListener('input', function() {
-  const largura = parseFloat(charruaWidth.value);
-
-  if (!isNaN(largura)) {
-    const preco = largura * precos.charrua.precoPorMetro; // multiplicar pelo preço por metro
-    precocharrua.value = preco//.toFixed(2); // 2 casas decimais
-  } else {
-    precocharrua.value = '';
-  }
-});
 
 
 // trator --------------------------------------------------------------------------
@@ -100,8 +87,48 @@ function calcularPrecoTrator() {
   }
 };
 
+// Reboque --------------------------------------------------------------------------
+const mReboque = document.getElementById('m_reboque');
+const eixoReboque = document.getElementById('eixo_reboque');
+const precoReboque = document.getElementById('preco_reboque');
+
+mReboque.addEventListener('change',calcularPrecoReboque);
+eixoReboque.addEventListener('change',calcularPrecoReboque);
+
+function calcularPrecoReboque() {
+  const metros = parseFloat(mReboque.value);
+  const eixo = eixoReboque.value;
+
+  if (!isNaN(metros)) {
+    let preco = metros * precos.reboque.precoPorMetro; // multiplicar pelo preço por metro
+
+    // Adiciona o preço do eixo, se houver
+   if(!isNaN(eixo)) {
+      preco += eixo * precos.reboque.axle_livr_for;
+    };
+
+    precoReboque.value = preco;
+  } else {
+    precoReboque.value = '';
+  }
+}
 
 
+
+// charrua --------------------------------------------------------------------------
+const charruaWidth = document.getElementById('charrua_width');
+const precocharrua = document.getElementById('preco_charrua');
+
+charruaWidth.addEventListener('input', function() {
+  const largura = parseFloat(charruaWidth.value);
+
+  if (!isNaN(largura)) {
+    const preco = largura * precos.charrua.precoPorMetro; // multiplicar pelo preço por metro
+    precocharrua.value = preco//.toFixed(2); // 2 casas decimais
+  } else {
+    precocharrua.value = '';
+  }
+});
 
 
 
