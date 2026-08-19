@@ -36,6 +36,11 @@
         "axle_livr_for": 4000
      },
 
+    "cisterna": {
+        "precoPorMetro": 2750,
+        "axle_livr_for": 4000
+     },
+
     "charrua": {
         "precoPorMetro": 6400
      },

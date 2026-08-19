@@ -10,9 +10,11 @@ select.addEventListener('change', function() {
   if (select.value === 'trator') {
     document.getElementById('trator').hidden = false;
   } else if (select.value === 'reboque') {
-    document.getElementById('Reboque').hidden = false;
+    document.getElementById('reboque').hidden = false;
   } else if (select.value === 'charrua') {
     document.getElementById('charrua').hidden = false;
+  }else if (select.value === 'cisterna') {
+    document.getElementById('cisterna').hidden = false;
   }
 
   console.log(select.value)
@@ -110,6 +112,33 @@ function calcularPrecoReboque() {
     precoReboque.value = preco;
   } else {
     precoReboque.value = '';
+  }
+}
+
+// cisterna
+//  --------------------------------------------------------------------------
+const mCisterna = document.getElementById('m_cisterna');
+const eixoCisterna = document.getElementById('eixo_cisterna');
+const precoCisterna = document.getElementById('preco_cisterna');
+
+mCisterna.addEventListener('change',calcularPrecoCisterna);
+eixoCisterna.addEventListener('change',calcularPrecoCisterna);
+
+function calcularPrecoCisterna() {
+  const metros = parseFloat(mCisterna.value);
+  const eixo = eixoCisterna.value;
+
+  if (!isNaN(metros)) {
+    let preco = metros * precos.cisterna.precoPorMetro; // multiplicar pelo preço por metro
+
+    // Adiciona o preço do eixo, se houver
+   if(!isNaN(eixo)) {
+      preco += eixo * precos.cisterna.axle_livr_for;
+    };
+
+    precoCisterna.value = preco;
+  } else {
+    precoCisterna.value = '';
   }
 }
 

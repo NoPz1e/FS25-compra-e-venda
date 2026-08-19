@@ -17,6 +17,7 @@
                 <option value="">-- Escolhe uma opção --</option>
                 <option value="trator">Trator</option>
                 <option value="reboque">Reboque</option>
+                <option value="cisterna">Cisterna</option>
                 <option value="charrua">charrua</option>
                 
 
@@ -85,7 +86,7 @@
 
             
 
-            <div id="Reboque" class="campos-condicionais" hidden>
+            <div id="reboque" class="campos-condicionais" hidden>
 
                 <label>
                     <p>m&sup3;: <input type="number" id="m_reboque"></p>
@@ -98,6 +99,23 @@
                     <button type="button" class="btn-copiar" data-target="preco_reboque"><img src="assets/copy_icon.png" width="10px"></button>
                     
                     <button type="button" class="btn-enviar" data-origem="preco_reboque" data-target="preco_novo"><img src="assets/send_icon.png" width="30px"></button>
+                    </p>
+               </label> 
+            </div>
+
+            <div id="cisterna" class="campos-condicionais" hidden>
+
+                <label>
+                    <p>m&sup3;: <input type="number" id="m_cisterna"></p>
+
+                    <p>Nº exle direcional: <input type="number" name="eixo_cisterna" id="eixo_cisterna"></p>
+
+                    <p>
+                    Preço: <input type="text" disabled id="preco_cisterna">
+
+                    <button type="button" class="btn-copiar" data-target="preco_cisterna"><img src="assets/copy_icon.png" width="10px"></button>
+                    
+                    <button type="button" class="btn-enviar" data-origem="preco_cisterna" data-target="preco_novo"><img src="assets/send_icon.png" width="30px"></button>
                     </p>
                </label> 
             </div>
