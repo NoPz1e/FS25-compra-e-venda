@@ -20,18 +20,28 @@ select.addEventListener('change', function() {
 
 
 
+// ler json de preços
+let precos = {};
 
-// charrua
+fetch('precos.json')
+  .then(response => response.json())
+  .then(data => {
+    precos = data;
+    console.log('Preços carregados:', precos);
+  })
+  .catch(err => console.error('Erro ao carregar preços:', err));
+
+
+
+// charrua --------------------------------------------------------------------------
 const charruaWidth = document.getElementById('charrua_width');
 const precocharrua = document.getElementById('preco_charrua');
-
-const preco_m_charrua = 6400; // define aqui o valor pelo qual queres multiplicar
 
 charruaWidth.addEventListener('input', function() {
   const largura = parseFloat(charruaWidth.value);
 
   if (!isNaN(largura)) {
-    const preco = largura * preco_m_charrua;
+    const preco = largura * precos.charrua.precoPorMetro; // multiplicar pelo preço por metro
     precocharrua.value = preco//.toFixed(2); // 2 casas decimais
   } else {
     precocharrua.value = '';
@@ -39,7 +49,7 @@ charruaWidth.addEventListener('input', function() {
 });
 
 
-// trator
+// trator --------------------------------------------------------------------------
 const cavalagemtrator = document.getElementById('cavalagem_trator');
 const selectCaixaTrator = document.getElementById('caixa_trator');
 const selectVelocidadeTrator = document.getElementById('velocidade_trator');
@@ -62,14 +72,33 @@ carregador.addEventListener('change', calcularPrecoTrator);
 function calcularPrecoTrator() {
   const cavalagem = parseFloat(cavalagemtrator.value);
 
-  console.log('Cavalagem:', cavalagem);
-  console.log('bracos.value', bracos.checked);
-  console.log('carregador.value', carregador.checked);
 
+  if (!isNaN(cavalagem)) {
+    let preco = cavalagem * precos.trator.cavalagem; // multiplicar pelo preço por cavalagem
+    
+    // Adiciona o preço da caixa
+    preco += precos.trator.caixa[selectCaixaTrator.value] || 0;
 
-  
+    // Adiciona o preço da velocidade
+    preco += precos.trator.velocidade[selectVelocidadeTrator.value] || 0;
+
+    // Adiciona o preço da marca (combinado com o tamanho dentro da marca)
+    preco += precos.trator[selectMarcaTrator.value]?.[selectTamanhoTrator.value] || 0;
+
+    // Adiciona o preço do tamanho (tabela solta, independente da marca)
+    preco += precos.trator.tamanho[selectTamanhoTrator.value] || 0;
+
+    // Adiciona o preço dos braços
+    preco += (bracos.checked ? precos.trator.bracos : 0);
+
+    // Adiciona o preço do carregador
+    preco += (carregador.checked ? precos.trator.carregador : 0);
+
+    precoTrator.value = preco;
+  } else {
+    precoTrator.value = '';
+  }
 };
-
 
 
 

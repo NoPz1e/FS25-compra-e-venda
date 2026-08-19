@@ -1,0 +1,36 @@
+{
+    "trator": {
+        "cavalagem": 800,
+        "caixa": {
+            "manual": 0,
+            "power_shift": 6500,
+            "CVT": 16650
+            },
+        "velocidade": {
+            "30": 0,
+            "40": 500,
+            "50": 2000
+            },
+        "JD/fent": {
+            "pequeno": 20000,
+            "medio": 40000,
+            "grande": 60000
+        },
+        "outras": {
+            "pequeno": 10000,
+            "medio": 20000,
+            "grande": 40000
+        },
+
+        "tamanho": {
+            "pequeno": 0,
+            "medio": 20000,
+            "grande": 40000
+        },
+        "bracos": 2000,
+        "carregador": 5000
+    },
+    "charrua": {
+        "precoPorMetro": 6400
+     }
+}
