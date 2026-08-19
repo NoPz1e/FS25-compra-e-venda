@@ -112,11 +112,40 @@ function calcularPrecoTrator() {
 
 
 
+// calculo usados/venda --------------------------------------------------------------------------
+const precoNovo = document.getElementById('preco_novo');
+const horas = document.getElementById('horas');
+const meses = document.getElementById('meses');
+const precoUsado = document.getElementById('preco_usado');
 
+precoNovo.addEventListener('input', calcularPrecoUsado);
+horas.addEventListener('input', calcularPrecoUsado);
+meses.addEventListener('input', calcularPrecoUsado);
 
+function calcularPrecoUsado() {
+  const novo = parseFloat(precoNovo.value);
+  const horasValor = parseFloat(horas.value);
+  const mesesValor = parseFloat(meses.value);
 
+  if (!isNaN(novo) && !isNaN(horasValor) && !isNaN(mesesValor)) {
 
-// copiar valores
+    // Desconto fixo por estar "usado"
+    let preco = novo - (novo * precos.taxas_usados.comprado / 100);
+
+    // Desconto acumulado por hora de uso
+    preco -= novo * (precos.taxas_usados.hora / 100) * horasValor;
+
+    // Desconto acumulado por mês de uso
+    preco -= novo * (precos.taxas_usados.meses / 100) * mesesValor;
+
+    precoUsado.value = preco.toFixed(0);
+
+  } else {
+    precoUsado.value = '';
+  }
+}
+
+// copiar valores ----------------------------------------------------------------------------
 const botoesCopiar = document.querySelectorAll('.btn-copiar');
 
 botoesCopiar.forEach(botao => {
@@ -129,7 +158,7 @@ botoesCopiar.forEach(botao => {
         const img = botao.querySelector('img');
         const srcOriginal = img.src;
 
-        img.src = '/assets/check_icon.png'; // um ícone de "certo" para feedback visual
+        img.src = 'assets/check_icon.png'; // um ícone de "certo" para feedback visual
         setTimeout(() => {
           img.src = srcOriginal;
         }, 1500);

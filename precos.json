@@ -32,5 +32,14 @@
     },
     "charrua": {
         "precoPorMetro": 6400
+     },
+
+
+
+
+     "taxas_usados": {
+        "comprado": 12,
+        "hora": 0.33,
+        "meses": 0.33
      }
 }
